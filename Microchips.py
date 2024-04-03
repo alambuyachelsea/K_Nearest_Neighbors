@@ -195,7 +195,6 @@ def part_3(training_data, k_values):
         ax.set_xlabel('Property 1')
         ax.set_ylabel('Property 2')
 
-    plt.tight_layout()
     plt.show()
 
 
