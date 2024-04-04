@@ -18,3 +18,4 @@ plt.show()
 
 print(train_labels[image_index])
 print(mndata.display(train_images[image_index]))
+push
