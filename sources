@@ -19,6 +19,10 @@ https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regress
 # Exercise 3
 https://en.wikipedia.org/wiki/MNIST_database
 https://stackoverflow.com/questions/40427435/extract-images-from-idx3-ubyte-file-or-gzip-via-python
+https://github.com/MrDataScience/tutorials/blob/master/Data/MNIST/How%20To%20Plot%20MNIST%20Digits%20Using%20Matplotlib.ipynb
+Rodrigues, F. C. M., Hirata, R., & Telea, A. C. (2018, October). Image-based visualization of classifier decision boundaries. In 2018 31st SIBGRAPI Conference on Graphics, Patterns and Images (SIBGRAPI) (pp. 353-360). IEEE.
+Y. LeCun, L. D. Jackel, L. Bottou, A. Brunot, C. Cortes, J. S. Denker, H. Drucker, I. Guyon, U. A. Muller, E. Sackinger, P. Simard and V. Vapnik: Comparison of learning algorithms for handwritten digit recognition, in Fogelman, F. and Gallinari, P. (Eds), International Conference on Artificial Neural Networks, 53-60, EC2 & Cie, Paris, 1995
+
 
 
 # Exercise 4
