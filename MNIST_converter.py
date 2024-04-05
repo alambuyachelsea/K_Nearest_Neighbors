@@ -1,3 +1,4 @@
+# Converts the data sets into CSV files and saves them
 
 def convert(imgf, labelf, outf, n):
     f = open(imgf, "rb")
