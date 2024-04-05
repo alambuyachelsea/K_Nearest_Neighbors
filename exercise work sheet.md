@@ -11,8 +11,7 @@
 [ ] which k gives best regression, motivate
 
 ## Exercise 3
-[ ] 
-
+[X] Processes MNIST data for image recognition
 
 ## Exercise 4
 [x] Repeat 1 using the KNeighborsClassifier form scikit-learn
