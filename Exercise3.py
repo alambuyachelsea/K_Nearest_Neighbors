@@ -1,43 +1,89 @@
-import matplotlib.pyplot as plt
 import numpy as np
-from mnist import MNIST
-
-# Load MNIST dataset
-mndata = MNIST('mnist_samples')
-train_images, train_labels = mndata.load_training()[0:10000]
-test_images, test_labels = mndata.load_testing()[0:1000]
-
-# Display an image
-image_index = 209
-image = np.array(train_images[image_index], dtype='uint8')
-image = image.reshape((28, 28))
+import time
 
 
-plt.imshow(image, cmap='gray')
-plt.axis('off')
-plt.show()
+def distance(train_point, test_pont):
+    return np.linalg.norm(train_point - train_point)
 
-print(train_labels[image_index])
-print(mndata.display(train_images[image_index]))
 
-# Get the coordinates of points
-x_coords, y_coords = np.where(image > 0)
+def knn_model(X, Y, point, k):
+    values = []
+    m = X.shape[0]
 
-# Plot the points
-plt.scatter(x_coords, 28 - y_coords, color='black', s=5)
-# Invert y-axis to match image orientation
+    for i in range(m):
+        dist = distance(point, X[i])
+        values.append((dist, Y[i]))
 
-plt.gca().set_aspect('equal', adjustable='box')
-# Set aspect ratio to maintain square pixels
+    values = sorted(values)
+    neighbors = values[:k]
+    neighbors = np.array(neighbors)
 
-plt.gca().invert_yaxis()  # Invert y-axis to match image orientation
-plt.axis('off')
-plt.show()
+    new_values = np.unique(neighbors[:, 1], return_counts=True)
 
-"""
-    crying sobbing, why did i choose this life for myself
-    Idea to solve
-    Use 2 features to create an expection for each figure
-    1. Intensity distribution
-    2. ?? more info needed
-"""
+    index = new_values[1].argmax()
+    prediction = new_values[0][index]
+
+    return prediction
+
+
+def error_counter(X, Y, x_test, y_test, k):
+    counter = 0
+    index = 0
+
+    for x in x_test:
+        prediction = knn_model(X, Y, x, k)
+        if prediction != y_test[index]:
+            counter += 1
+        index += 1
+
+    return counter
+
+
+def load_csv(path):
+    return np.loadtxt(path, delimiter=',', dtype="float64")
+
+
+# Files containing the data
+train_file_path = 'A1_datasets/mnist_train.csv'
+test_file_path = 'A1_datasets/mnist_test.csv'
+
+# Load test data
+training_data = load_csv(train_file_path)
+
+X = training_data[:, 1:]
+Y = training_data[:, 0]
+
+# split training data to train and test
+split = int(0.8*X.shape[0])
+x_train = X[:split, :]
+y_train = Y[:split]
+
+# Training test data
+x_train_test = X[split:, :]
+y_train_test = Y[split:]
+
+# Define different values of k
+k_values = [1, 3, 5, 7]
+
+# For training Error
+for k in k_values:
+    start = time.time()
+    error = error_counter(x_train, y_train, x_train_test, y_train_test, k)
+    end = time.time()
+    print(f'When k = {k} the errors are {error}')
+    print(end - start)
+
+test_data = load_csv(test_file_path)
+
+test_x = test_data[:, 1:]
+test_y = test_data[:, 0]
+
+# For Test Error
+for k in k_values:
+    start = time.time()
+    error = error_counter(x_train, y_train, test_x, test_y, k)
+    end = time.time()
+    print(f'When k = {k} the errors are {error}')
+    print(end - start)
+
+# Accuracy will be based o the diff between test and train error
