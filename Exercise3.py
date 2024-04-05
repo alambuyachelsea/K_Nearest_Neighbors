@@ -49,6 +49,22 @@ def load_csv(path):
     return np.loadtxt(path, delimiter=',', dtype="float64")
 
 
+# Starts classification test data with training set
+def start_classifying(X, Y, test_x, test_y, k_values):
+
+    for k in k_values:
+        start = time.time()
+        error = error_counter(X, Y, test_x, test_y, k)
+        end = time.time()
+
+        # Accuracy calculation
+        acc = 1 - np.round(error / x_train.shape[0], 3)
+
+        print(f'When k = {k}')
+        print(f'Errors = {error} and Accuracy = {acc}')
+        print(f'Time taken = {(np.round(end - start))} seconds')
+
+
 # Files containing the data
 train_file_path = 'A1_datasets/mnist_train.csv'
 test_file_path = 'A1_datasets/mnist_test.csv'
@@ -72,12 +88,8 @@ y_train_test = Y[split:]
 k_values = [1, 3, 5, 7]
 
 # For training Error
-for k in k_values:
-    start = time.time()
-    error = error_counter(x_train, y_train, x_train_test, y_train_test, k)
-    end = time.time()
-    print(f'When k = {k} the errors are {error}')
-    print(end - start)
+print('For the training error')
+start_classifying(x_train, y_train, x_train_test, y_train_test, k_values)
 
 # Loads the test data set
 test_data = load_csv(test_file_path)
@@ -86,11 +98,5 @@ test_x = test_data[:, 1:]
 test_y = test_data[:, 0]
 
 # For Test Error
-for k in k_values:
-    start = time.time()
-    error = error_counter(x_train, y_train, test_x, test_y, k)
-    end = time.time()
-    print(f'When k = {k} the errors are {error}')
-    print(end - start)
-
-# Accuracy will be based o the diff between test and train error
+print('For the test error')
+start_classifying(x_train, y_train, test_x, test_y, k_values)
