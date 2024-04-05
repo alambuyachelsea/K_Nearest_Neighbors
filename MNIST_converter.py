@@ -24,7 +24,7 @@ def convert(imgf, labelf, outf, n):
 
 convert("mnist_samples/train-images-idx3-ubyte",
         "mnist_samples/train-labels-idx1-ubyte",
-        "mnist_train.csv", 10000)
+        "A1_datasets/mnist_train_full.csv", 60000)
 convert("mnist_samples/t10k-images-idx3-ubyte",
         "mnist_samples/t10k-labels-idx1-ubyte",
-        "mnist_test.csv", 1000)
+        "A1_datasets/mnist_test_full.csv", 10000)

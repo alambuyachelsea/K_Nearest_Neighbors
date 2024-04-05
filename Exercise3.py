@@ -58,7 +58,7 @@ def start_classifying(X, Y, test_x, test_y, k_values):
         end = time.time()
 
         # Accuracy calculation
-        acc = 1 - np.round(error / x_train.shape[0], 3)
+        acc = 1 - np.round(error / x_train.shape[0], 5)
 
         print(f'When k = {k}')
         print(f'Errors = {error} and Accuracy = {acc}')

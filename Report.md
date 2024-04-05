@@ -1,5 +1,8 @@
 # machine-learning-a1
 
+First load the requirements packages using pip install
+
+
 ## Exercise 2: K-NN Regression
 The MSE training error
 K1 = 0
@@ -30,3 +33,10 @@ First I Converted 10,000 train data and 1,000 test MNIST dataset into CSV files 
 I then used the KNN model to determine the number of errors, the accuracy for each K value and the time it takes to compute it. For the training data set the time taken is about (80 - 90) seconds to compute.
 
 Then I load the test MNIST dataset and use the KNN model to determine the number of errors, the accuracy for each K value and the time it takes to compute it. For the test data set the time taken is about (40 - 50) seconds to compute.
+
+For the full data set, first run the MNIST converte to convert the full dataset and run the Exercise3_Full.py The implementation is the same but due to the much larger dataset the training process time per K value is aproximately 120 minutes and the test processing time is 45 minutes per K value
+
+I think the most suitable K value is K5. It gives a lower test error and higher accuracy than K1 and K3. Since it gives the same error as K7 when we compare the training error we can see that K5 gives a lower error than K7.
+
+# Additional info
+Supporting images for exercise 1 and 2 have been included in the images folder to showcase expected results
