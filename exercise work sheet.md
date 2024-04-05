@@ -15,4 +15,4 @@
 
 
 ## Exercise 4
-[ ] Repeat 1 using the KNeighborsClassifier form scikit-learn
+[x] Repeat 1 using the KNeighborsClassifier form scikit-learn
