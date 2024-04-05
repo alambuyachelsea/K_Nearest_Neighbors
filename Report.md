@@ -25,4 +25,8 @@ Amongst the remaining K values [3, 5, 7, 9], K9 has the lowest test error so I t
 
 
 ## Exercise 3: MNIST data set
-First I Converted the MNIST dataset into a CSV file which i could work with. I loaded the train
+First I Converted 10,000 train data and 1,000 test MNIST dataset into CSV files which I could work with. I loaded the train data set and split it into [x_train, y_train] which is 80% of the dataset and [x_train_test, y_train_test] which is the remaining 20% of the dataset.
+
+I then used the KNN model to determine the number of errors, the accuracy for each K value and the time it takes to compute it. For the training data set the time taken is about (80 - 90) seconds to compute.
+
+Then I load the test MNIST dataset and use the KNN model to determine the number of errors, the accuracy for each K value and the time it takes to compute it. For the test data set the time taken is about (40 - 50) seconds to compute.
