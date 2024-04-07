@@ -7,7 +7,7 @@ from operator import itemgetter
 # opens the file and retrives the data
 def open_file(file_path):
 
-    polynomials = []  # Empty list to store values
+    dataset = []  # Empty list to store values
 
     with open(file_path) as csvfile:
         reader = csv.reader(csvfile)
@@ -20,9 +20,9 @@ def open_file(file_path):
                 x = float(value)
                 line.append(x)
 
-            polynomials.append(line)
+            dataset.append(line)
 
-    return polynomials
+    return dataset
 
 
 # Retrus the k nearest neighbors
@@ -176,9 +176,9 @@ def display_test_set_MSE(test_set, training_set, k):
 file_path = 'Datasets/Dataset_2.csv'
 
 # Part 1: Split the givien data
-polynomials = open_file(file_path)
-training_set = polynomials[0:100]
-test_set = polynomials[100:]
+dataset = open_file(file_path)
+training_set = dataset[0:100]
+test_set = dataset[100:]
 
 # Part 2: Plot training and test data sets in 1x2
 plot_training_test(training_set, test_set)
